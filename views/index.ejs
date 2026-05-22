@@ -1,0 +1,158 @@
+<%- include('partials/header') %>
+
+<!-- Smart MVC View Swapper -->
+<% if (page === 'landing') { %>
+  <!-- Hero Section -->
+  <header class="hero-wrapper text-center d-flex align-items-center justify-content-center">
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+    
+    <div class="container position-relative z-index-2">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+          <div class="badge rounded-pill badge-hero-glow px-3 py-2 mb-3 text-gradient text-uppercase">
+            <i class="fa-solid fa-wand-magic-sparkles me-2"></i>Next-Gen AI Career Ecosystem
+          </div>
+          <h1 class="hero-title font-outfit text-white mb-3">
+            Evolve Your Career with <span class="text-gradient">AI Precision</span>
+          </h1>
+          <p class="hero-subtitle text-muted-50 mb-5">
+            Upload your resume, match with premium developer internships, and receive real-time ATS scoring, missing skill analyses, and AI career guidance using Google Gemini models.
+          </p>
+          <div class="d-flex flex-column flex-sm-row justify-content-center gap-3">
+            <% if (user) { %>
+              <a href="/dashboard" class="btn btn-premium rounded-pill btn-lg px-5 shadow">
+                Go to Dashboard<i class="fa-solid fa-arrow-right ms-2"></i>
+              </a>
+            <% } else { %>
+              <a href="/register" class="btn btn-premium rounded-pill btn-lg px-5 shadow">
+                Get Started Now<i class="fa-solid fa-arrow-right ms-2"></i>
+              </a>
+              <a href="/login" class="btn btn-outline-premium rounded-pill btn-lg px-5">
+                Explore Internships
+              </a>
+            <% } %>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Telemetry Stats (Responsive Grid) -->
+      <div class="row mt-5 pt-5 justify-content-center" id="about">
+        <div class="col-md-4 col-lg-3 mb-4">
+          <div class="glass-card p-4 hover-lift">
+            <div class="icon-glow bg-primary-10 mx-auto mb-3">
+              <i class="fa-solid fa-briefcase text-gradient-purple fs-4"></i>
+            </div>
+            <h3 class="stats-number font-outfit text-white">4+</h3>
+            <p class="text-muted text-sm mb-0">Preseeded Internships</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-3 mb-4">
+          <div class="glass-card p-4 hover-lift">
+            <div class="icon-glow bg-success-10 mx-auto mb-3">
+              <i class="fa-solid fa-circle-nodes text-gradient-teal fs-4"></i>
+            </div>
+            <h3 class="stats-number font-outfit text-white">100%</h3>
+            <p class="text-muted text-sm mb-0">Gemini AI Integrated</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-3 mb-4">
+          <div class="glass-card p-4 hover-lift">
+            <div class="icon-glow bg-amber-10 mx-auto mb-3">
+              <i class="fa-solid fa-shield-halved text-gradient-amber fs-4"></i>
+            </div>
+            <h3 class="stats-number font-outfit text-white">JWT</h3>
+            <p class="text-muted text-sm mb-0">Secure HttpOnly Cookie</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Features Section -->
+  <section class="features-wrapper py-5 position-relative" id="features">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title font-outfit text-white">Engineered For Future Talent</h2>
+        <p class="text-muted">A full-stack portfolio-grade ecosystem powered by the latest web standards.</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card p-4 h-100">
+            <div class="features-icon mb-4"><i class="fa-solid fa-file-pdf text-danger fs-3"></i></div>
+            <h5 class="text-white font-outfit">Resume Upload & Parsing</h5>
+            <p class="text-muted text-sm">Upload standard PDF or text resumes. The system automatically reads text metadata streams via custom parsing pipelines.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card p-4 h-100">
+            <div class="features-icon mb-4"><i class="fa-solid fa-chart-pie text-success fs-3"></i></div>
+            <h5 class="text-white font-outfit">Automated ATS Matrix</h5>
+            <p class="text-muted text-sm">Review resume readiness mapped directly to desired positions. Receive scoring breakdowns based on real-time assessments.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card p-4 h-100">
+            <div class="features-icon mb-4"><i class="fa-solid fa-graduation-cap text-warning fs-3"></i></div>
+            <h5 class="text-white font-outfit">Career Suggestion Engine</h5>
+            <p class="text-muted text-sm">Receive targeted path maps, skill gap analyses, and concrete bullet-point action plans generated directly by LLM API prompts.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card p-4 h-100">
+            <div class="features-icon mb-4"><i class="fa-solid fa-bolt text-info fs-3"></i></div>
+            <h5 class="text-white font-outfit">Sub-Millisecond Search</h5>
+            <p class="text-muted text-sm">Live client-side input triggers debounced AJAX API query searches cached securely in back-end TTL memory.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card p-4 h-100">
+            <div class="features-icon mb-4"><i class="fa-solid fa-lock text-purple fs-3"></i></div>
+            <h5 class="text-white font-outfit">State-Persisted Auth</h5>
+            <p class="text-muted text-sm">Bcrypt hashed password variables, JWT token creations, and protected controller routes backed by HTTP-only verification guards.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="glass-card p-4 h-100">
+            <div class="features-icon mb-4"><i class="fa-solid fa-laptop-code text-primary fs-3"></i></div>
+            <h5 class="text-white font-outfit">Modern Responsive UI</h5>
+            <p class="text-muted text-sm">Stunning visuals supporting dynamic CSS styles, custom glassmorphism components, and flexible desktop/mobile grids.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<% } else if (page === 'error') { %>
+  <!-- Centralized Error Screen -->
+  <section class="container py-5 mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="glass-card border-danger border-opacity-25 p-5 text-center shadow-lg position-relative overflow-hidden">
+          <div class="error-badge bg-danger bg-opacity-10 border border-danger text-danger rounded-pill px-4 py-2 d-inline-flex align-items-center mb-4">
+            <i class="fa-solid fa-triangle-exclamation fs-5 me-2"></i>HTTP ERROR <%= error.status %>
+          </div>
+          <h1 class="font-outfit text-white mb-3"><%= error.message %></h1>
+          
+          <div class="glass-inset text-start p-4 rounded-4 mb-4 font-monospace text-xs text-danger border border-secondary border-opacity-10" style="max-height: 250px; overflow-y: auto;">
+            <%= error.details %>
+          </div>
+
+          <div class="d-flex justify-content-center gap-3">
+            <a href="/" class="btn btn-premium rounded-pill px-4">
+              <i class="fa-solid fa-home me-2"></i>Return Home
+            </a>
+            <% if (user) { %>
+              <a href="/dashboard" class="btn btn-outline-premium rounded-pill px-4">
+                View Dashboard
+              </a>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<% } %>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,134 @@
+<%- include('partials/header') %>
+
+<main class="container py-5 d-flex align-items-center justify-content-center" style="min-height: calc(100vh - 160px);">
+  <div class="glow-sphere sphere-4"></div>
+  <div class="row justify-content-center w-100">
+    <div class="col-md-10 col-lg-7 col-xl-6">
+      <div class="glass-card p-4 p-sm-5 shadow-lg position-relative z-index-2">
+        <div class="text-center mb-4">
+          <i class="fa-solid fa-user-plus text-gradient-purple fs-1 mb-2"></i>
+          <h2 class="font-outfit text-white mb-1">Create Account</h2>
+          <p class="text-muted text-sm">Join the AI-powered portal and unlock career insights</p>
+        </div>
+
+        <!-- Server side validation display alerts -->
+        <% if (errors && errors.length > 0) { %>
+          <div class="alert alert-danger bg-danger-10 border-danger border-opacity-25 rounded-4 text-sm text-white" role="alert">
+            <ul class="mb-0 ps-3">
+              <% errors.forEach(function(err) { %>
+                <li><%= err %></li>
+              <% }) %>
+            </ul>
+          </div>
+        <% } %>
+
+        <form action="/register" method="POST" id="authRegisterForm" novalidate>
+          <div class="row">
+            <div class="col-sm-6 mb-3">
+              <label for="regUsername" class="form-label text-sm text-light">Username</label>
+              <div class="input-group-glass">
+                <span class="input-icon"><i class="fa-regular fa-user text-muted"></i></span>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="regUsername" 
+                  name="username" 
+                  placeholder="johndoe" 
+                  value="<%= prevInput && prevInput.username ? prevInput.username : '' %>"
+                  required
+                >
+              </div>
+              <div class="invalid-feedback-custom text-xs text-danger mt-1" id="regUsernameErr"></div>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+              <label for="regEmail" class="form-label text-sm text-light">Email Address</label>
+              <div class="input-group-glass">
+                <span class="input-icon"><i class="fa-regular fa-envelope text-muted"></i></span>
+                <input 
+                  type="email" 
+                  class="form-control" 
+                  id="regEmail" 
+                  name="email" 
+                  placeholder="john@example.com" 
+                  value="<%= prevInput && prevInput.email ? prevInput.email : '' %>"
+                  required
+                >
+              </div>
+              <div class="invalid-feedback-custom text-xs text-danger mt-1" id="regEmailErr"></div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6 mb-3">
+              <label for="regRole" class="form-label text-sm text-light">Account Type</label>
+              <div class="input-group-glass">
+                <span class="input-icon"><i class="fa-solid fa-users-gear text-muted"></i></span>
+                <select class="form-select text-sm" id="regRole" name="role" required>
+                  <option value="Job Seeker" <%= prevInput && prevInput.role === 'Job Seeker' ? 'selected' : '' %>>Job Seeker</option>
+                  <option value="Recruiter" <%= prevInput && prevInput.role === 'Recruiter' ? 'selected' : '' %>>Recruiter</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-sm-6 mb-3">
+              <label for="regSkills" class="form-label text-sm text-light">Skills (Comma-separated)</label>
+              <div class="input-group-glass">
+                <span class="input-icon"><i class="fa-solid fa-code text-muted"></i></span>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="regSkills" 
+                  name="skills" 
+                  placeholder="HTML, CSS, Node" 
+                  value="<%= prevInput && prevInput.skills ? prevInput.skills : '' %>"
+                >
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label for="regPassword" class="form-label text-sm text-light">Password</label>
+            <div class="input-group-glass mb-2">
+              <span class="input-icon"><i class="fa-solid fa-key text-muted"></i></span>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="regPassword" 
+                name="password" 
+                placeholder="Must be 6+ chars" 
+                required
+              >
+            </div>
+            
+            <!-- Dynamic Password strength indicator component -->
+            <div class="password-meter-wrapper d-none mb-3">
+              <div class="progress rounded-pill bg-dark-50 border border-secondary border-opacity-10" style="height: 6px;">
+                <div id="passwordStrengthBar" class="progress-bar progress-bar-striped progress-bar-animated rounded-pill" role="progressbar" style="width: 0%"></div>
+              </div>
+              <div class="d-flex justify-content-between text-xs mt-1">
+                <span class="text-muted">Password Strength:</span>
+                <span id="passwordStrengthText" class="fw-bold">Weak</span>
+              </div>
+            </div>
+
+            <div class="invalid-feedback-custom text-xs text-danger" id="regPasswordErr"></div>
+          </div>
+
+          <button type="submit" class="btn btn-premium w-100 rounded-pill py-2 shadow">
+            Register Account<i class="fa-solid fa-user-check ms-2"></i>
+          </button>
+        </form>
+
+        <div class="text-center mt-4">
+          <p class="text-muted text-sm mb-0">
+            Already have an account? 
+            <a href="/login" class="text-gradient font-bold text-decoration-none ms-1 hover-underline">Sign In</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<%- include('partials/footer') %>
